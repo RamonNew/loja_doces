@@ -20,6 +20,52 @@ class CategoriaController{
             }
         )
     }
+    read(req,res){
+        CategoriaModel.read().then(
+            resposta =>{
+                console.debug("Exibindo categorias")
+                res.status(resposta[0]).json(resposta[1])
+            }
+        ).catch(
+            resposta =>{
+                console.debug(resposta)
+                console.debug("Erro Exibindo categorias")
+                res.status(resposta[0]).json(resposta[1])
+            }
+        )
+    }
+    update(req,res){
+        const id_categoria = req.params.id_categoria
+        const nome_categoria = req.body.nome_categoria
+        CategoriaModel.update(id_categoria,nome_categoria).then(
+            resposta =>{
+                console.debug("Atualizando categoria")
+                res.status(resposta[0]).json(resposta[1])
+            }
+        ).catch(
+            resposta =>{
+                console.debug(resposta)
+                console.debug("Erro Atualizando categoria")
+                res.status(resposta[0]).json(resposta[1])
+            }
+        )
+    }
+
+    delete(req,res){
+        const id_categoria = req.params.id_categoria
+        CategoriaModel.delete(id_categoria).then(
+            resposta =>{
+                console.debug("Deletando categoria")
+                res.status(resposta[0]).json(resposta[1])
+            }
+        ).catch(
+            resposta =>{
+                console.debug(resposta)
+                console.debug("Erro Deletando categoria")
+                res.status(resposta[0]).json(resposta[1])
+            }
+        )
+    }
 }
 
 export default new CategoriaController()
