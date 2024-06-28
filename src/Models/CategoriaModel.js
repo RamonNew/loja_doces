@@ -59,8 +59,4 @@ class CategoriaModel{
     }
 }
 
-//const categorias = new CategoriaModel()
-// categorias.create("Argentinos")
-//categorias.read()
-
 export default new CategoriaModel();
